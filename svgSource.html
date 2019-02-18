@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="svg-container">
+    <svg
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+            xml:space="preserve" width="500" height="440"
+    >
+    <circle id="mycircle" cx="400" cy="300" r="50" />
+  </svg>
+</div>
+<script>
+    var svgString = new XMLSerializer()
+        .serializeToString(document.querySelector('svg'));
+    alert(svgString);
+</script>
+</body>
+</html>

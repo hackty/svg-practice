@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<canvas id="canvas"></canvas>
+<svg
+        id="mysvg"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 800 600"
+        preserveAspectRatio="xMidYMid meet"
+>
+    <circle id="mycircle" cx="400" cy="300" r="50" />
+</svg>
+
+<script>
+    var svgString = new XMLSerializer()
+        .serializeToString(document.querySelector('svg'));
+    var img = new Image();
+    var svg = new Blob([svgString],{type: "image/svg+xml;charset=utf-8"});
+    var DOMURL = self.URL || self.webkitURL || self;
+    var url = DOMURL.createObjectURL(svg);
+    img.src=url;
+    img.onload = function () {
+        var canvas = document.getElementById('canvas');
+        var ctx = canvas.getContext('2d');
+        ctx.drawImage(img, 0, 0);
+    };
+
+</script>
+</body>
+</html>
